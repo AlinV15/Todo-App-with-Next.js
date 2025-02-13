@@ -8,7 +8,7 @@ interface Task {
   completed: boolean;
 }
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   const db = await connectToDatabase();
   const collection = db.db.collection("tasks");
 

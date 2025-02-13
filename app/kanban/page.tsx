@@ -52,7 +52,7 @@ const KanbanBoard: React.FC = () => {
         const data = await response.json();
         setKanban(data.length > 0 ? data[0] : defaultKanban);
       } catch (err) {
-        setError('Failed to load board');
+        setError('Failed to load board' + err);
         setKanban(defaultKanban);
       } finally {
         setLoading(false);
@@ -122,7 +122,7 @@ const KanbanBoard: React.FC = () => {
 
       setNewCardText('');
     } catch (err) {
-      setError('Failed to add card');
+      setError('Failed to add card' + err);
     }
   };
 
@@ -164,7 +164,7 @@ const KanbanBoard: React.FC = () => {
         };
       });
     } catch (err) {
-      setError('Failed to update card');
+      setError('Failed to update card'+ err);
     }
   };
 
@@ -196,7 +196,7 @@ const KanbanBoard: React.FC = () => {
         };
       });
     } catch (err) {
-      setError('Failed to delete card');
+      setError('Failed to delete card' + err);
     }
   };
 
@@ -260,7 +260,7 @@ const KanbanBoard: React.FC = () => {
         };
       });
     } catch (err) {
-      setError('Failed to move card');
+      setError('Failed to move card' + err);
     }
 
     setDraggedCard(null);
