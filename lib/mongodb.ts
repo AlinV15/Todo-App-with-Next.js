@@ -1,7 +1,7 @@
-import { MongoClient } from "mongodb";
+import { MongoClient, Db } from "mongodb";
 
 let cachedClient: MongoClient | null = null;
-let cachedDb: any = null;
+let cachedDb: Db | null = null;
 
 const connectToDatabase = async () => {
   // Dacă conexiunea a fost deja deschisă, returnează conexiunea cached

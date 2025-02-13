@@ -1,11 +1,11 @@
 "use client";
-import { UserButton, useUser } from "@clerk/nextjs";
+import { UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
 export default function Sidebar() {
-  const { isSignedIn, user } = useUser();
+  
   const [isOpen, setIsOpen] = useState(false);
 
   // Toggle sidebar visibility

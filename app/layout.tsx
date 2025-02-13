@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
-import Header from "@/components/Sidebar"; // care este Sidebar-ul în cazul tău
 import Sidebar from "@/components/Sidebar";
 
 const geistSans = Geist({

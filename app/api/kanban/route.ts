@@ -1,10 +1,8 @@
-// app/api/kanban/route.ts
-import Kanban from '@/models/Kanban';
+ // Asumăm că ai definit tipurile corespunzătoare
+import Kanban, { Card, List } from '@/models/Kanban';
 import { connect } from 'mongoose';
 import { NextRequest } from 'next/server';
-
-
-import { NextResponse } from "next/server";
+import { NextResponse } from 'next/server';
 
 export async function GET() {
   try {
@@ -57,7 +55,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Find the list and add the card
-    const list = kanban.lists.find((l: any) => l._id.toString() === listId);
+    const list = kanban.lists.find((l: List) => l._id.toString() === listId);
     if (!list) {
       return NextResponse.json(
         { error: "List not found" },
@@ -104,7 +102,7 @@ export async function PUT(request: NextRequest) {
 
     // Handle card completion update
     if (completed !== undefined) {
-      const list = kanban.lists.find((l: any) => l._id.toString() === listId);
+      const list = kanban.lists.find((l: List) => l._id.toString() === listId);
       if (!list) {
         return NextResponse.json(
           { error: "List not found" },
@@ -112,7 +110,7 @@ export async function PUT(request: NextRequest) {
         );
       }
 
-      const card = list.cards.find((c: any) => c._id.toString() === cardId);
+      const card = list.cards.find((c: Card) => c._id.toString() === cardId);
       if (!card) {
         return NextResponse.json(
           { error: "Card not found" },
@@ -124,8 +122,8 @@ export async function PUT(request: NextRequest) {
     }
     // Handle card movement
     else if (sourceListId && destListId) {
-      const sourceList = kanban.lists.find((l: any) => l._id.toString() === sourceListId);
-      const destList = kanban.lists.find((l: any) => l._id.toString() === destListId);
+      const sourceList = kanban.lists.find((l: List) => l._id.toString() === sourceListId);
+      const destList = kanban.lists.find((l: List) => l._id.toString() === destListId);
       
       if (!sourceList || !destList) {
         return NextResponse.json(
@@ -134,7 +132,7 @@ export async function PUT(request: NextRequest) {
         );
       }
 
-      const cardIndex = sourceList.cards.findIndex((c: any) => c._id.toString() === cardId);
+      const cardIndex = sourceList.cards.findIndex((c: Card) => c._id.toString() === cardId);
       if (cardIndex === -1) {
         return NextResponse.json(
           { error: "Card not found" },
@@ -175,7 +173,7 @@ export async function DELETE(request: NextRequest) {
       );
     }
 
-    const list = kanban.lists.find((l: any) => l._id.toString() === listId);
+    const list = kanban.lists.find((l: List) => l._id.toString() === listId);
     if (!list) {
       return NextResponse.json(
         { error: "List not found" },
@@ -183,7 +181,7 @@ export async function DELETE(request: NextRequest) {
       );
     }
 
-    const cardIndex = list.cards.findIndex((c: any) => c._id.toString() === cardId);
+    const cardIndex = list.cards.findIndex((c: Card) => c._id.toString() === cardId);
     if (cardIndex === -1) {
       return NextResponse.json(
         { error: "Card not found" },

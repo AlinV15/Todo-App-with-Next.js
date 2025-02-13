@@ -9,7 +9,7 @@ interface Task {
   completed: boolean;
 }
 
-const page = () => {
+const Page = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
 
   useEffect(() => {
@@ -70,4 +70,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
