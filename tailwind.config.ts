@@ -12,6 +12,11 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        bebas: ['Bebas Neue', 'sans-serif'],
+        robotoCondensed: ['Roboto Condensed', 'sans-serif'],
+        josefin: ['Josefin Sans', 'sans-serif'],
+      },
     },
   },
   plugins: [],
